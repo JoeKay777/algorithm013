@@ -150,3 +150,29 @@ public static void quickSort(int[] arr, int left, int right) {
         arr[j] = temp;
     }
 ```
+
+```
+// 计数排序
+public static void countingSort(int[] arr) {
+    int min = arr[0], max = arr[0];
+    for (int num : arr) {
+        if (num < min) {
+            min = num;
+        } else if (num > max) {
+            max = num;
+        }
+    }
+    int[] countArr = new int[max - min + 1];
+
+    for (int num : arr) {
+        countArr[num - min] += 1;
+    }
+
+    int index = 0;
+    for (int i = 0; i < countArr.length; i++) {
+        while (countArr[i]-- > 0) {
+            arr[index++] = i + min;
+        }
+    }
+}
+```
