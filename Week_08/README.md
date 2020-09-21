@@ -77,3 +77,30 @@ public int[] selectionSort(int[] arr) {
     return arr;
 }
 ```
+
+```
+// 5.快速排序
+public static void quickSort(int[] arr, int left, int right) {
+    if(left >= right) return;
+    int pivot = arr[left];  // 基准点
+    int i = left;
+    int j = right;
+    while (i < j) {
+        while (arr[j] >= pivot && i < j) {      // 优先从右边走，保证相遇点是小于基准点的
+            j--;
+        }
+        while (arr[i] <= pivot && i <j) {
+            i++;
+        }
+        if(i <j) {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+    arr[left] = arr[i];
+    arr[i] = pivot;
+    quickSort(arr, left, i -1);
+    quickSort(arr, i + 1, right);
+}
+```
